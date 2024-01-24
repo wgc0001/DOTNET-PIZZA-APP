@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DOTNET-PIZZA-APP", "DOTNET-PIZZA-APP.csproj", "{CD12D18A-9533-4C2F-BEA6-114E49AAF45A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD12D18A-9533-4C2F-BEA6-114E49AAF45A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD12D18A-9533-4C2F-BEA6-114E49AAF45A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD12D18A-9533-4C2F-BEA6-114E49AAF45A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD12D18A-9533-4C2F-BEA6-114E49AAF45A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3381F3CB-6CA5-4C5E-8979-F157DC51CF0C}
+	EndGlobalSection
+EndGlobal
