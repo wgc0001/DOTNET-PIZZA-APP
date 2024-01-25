@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  
+  form {
+    max-width: 600px;
+    margin-top: 20px; /* Adjust as needed */
+  }
+
+  button {
+    font-size: 16px; /* Adjust as needed */
+    padding: 10px 20px; /* Adjust as needed */
+    border-radius: 5px; /* Optional: Add rounded corners */
+  }
