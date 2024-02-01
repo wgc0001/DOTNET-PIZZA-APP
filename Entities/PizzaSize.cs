@@ -4,7 +4,8 @@ using System.Linq;
 
 namespace PizzaModels{
     public class PizzaSize {
-        public string Id {get; set;} =null!;
+        public string Id {get; set;} = null!;
         public string PizzaSizeName {get; set;} = null!;
+        public List<PizzaType> PizzaTypes {get; set;}
     }
 }

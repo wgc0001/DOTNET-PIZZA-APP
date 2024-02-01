@@ -1,27 +1,33 @@
+using DOTNET_PIZZA_APP.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using PizzaService;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllersWithViews();
+// Add your service
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddDbContext<DataContext>(); 
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 app.UseRouting();
+// Define your API endpoint, passing the request object
+app.MapPost("/api/pizza/createorder", (PizzaController controller) =>
+{
+    return (HttpRequest request) => controller.CreateOrder(request);
+});
 
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-
-app.MapFallbackToFile("index.html");;
+app.MapGet("/api/pizza/types", async ([FromServices] PizzaController controller) =>
+{
+        try
+    {
+        var pizzaTypes = await controller.GetPizzaTypes();
+        return Results.Json(pizzaTypes);
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(detail: ex.Message);
+    }
+});
 
 app.Run();
+

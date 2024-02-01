@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DOTNET_PIZZA_APP.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240124184403_UpdateEntityIds")]
-    partial class UpdateEntityIds
+    [Migration("20240131201644_UpdateRelationships")]
+    partial class UpdateRelationships
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,9 @@ namespace DOTNET_PIZZA_APP.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("text");
+
+                    b.Property<int>("OrderPrice")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -185,6 +188,21 @@ namespace DOTNET_PIZZA_APP.Migrations
                     b.ToTable("PizzaTypes");
                 });
 
+            modelBuilder.Entity("PizzaSizePizzaType", b =>
+                {
+                    b.Property<string>("PizzaSizesId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PizzaTypesId")
+                        .HasColumnType("text");
+
+                    b.HasKey("PizzaSizesId", "PizzaTypesId");
+
+                    b.HasIndex("PizzaTypesId");
+
+                    b.ToTable("PizzaSizePizzaType");
+                });
+
             modelBuilder.Entity("PizzaToppingsPizzaType", b =>
                 {
                     b.Property<string>("PizzaToppingsId")
@@ -263,6 +281,21 @@ namespace DOTNET_PIZZA_APP.Migrations
                     b.Navigation("PizzaSize");
 
                     b.Navigation("PizzaType");
+                });
+
+            modelBuilder.Entity("PizzaSizePizzaType", b =>
+                {
+                    b.HasOne("PizzaModels.PizzaSize", null)
+                        .WithMany()
+                        .HasForeignKey("PizzaSizesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PizzaModels.PizzaType", null)
+                        .WithMany()
+                        .HasForeignKey("PizzaTypesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PizzaToppingsPizzaType", b =>

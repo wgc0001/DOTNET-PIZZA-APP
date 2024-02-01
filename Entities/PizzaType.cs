@@ -8,6 +8,7 @@ namespace PizzaModels {
         public string PizzaName {get; set;} = null!;
         public string PizzaDescription {get; set;}
         public List<PizzaToppings> PizzaToppings {get; set;} 
+        public List<PizzaSize> PizzaSizes {get; set;}
          
     }
 }
